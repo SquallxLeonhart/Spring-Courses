@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<bean id="logger" name="logger"
+		class="com.leon.springhello.autowiring.annotations.Logger3">
+	</bean>
+
+	<bean id="consoleWriter" name="consoleWriter"
+		class="com.leon.springhello.autowiring.ConsoleWriter" primary="true">
+		<qualifier value="toconsole"></qualifier><!-- se agrega tag para distinguir el candidato entre los dos beans de tipo ConsoleWriter -->
+	</bean>
+
+	<bean id="squirrel" name="squirrel"
+		class="com.leon.springhello.autowiring.ConsoleWriter" primary="true">
+	</bean>
+
+	<bean id="fileWriter" name="fileWriter"
+		class="com.leon.springhello.autowiring.FileWriter">
+	</bean>
+
+	<context:annotation-config></context:annotation-config>
+</beans>
